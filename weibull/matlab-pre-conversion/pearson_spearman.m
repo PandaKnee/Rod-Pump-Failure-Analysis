@@ -28,7 +28,7 @@ rp_data(:, {'roduid', 'UWI', 'NODEID', 'IDWELL', 'tbguid', ...
 isNumerical= varfun(@isnumeric, rp_data, 'OutputFormat', 'uniform');
 numericalColumns= rp_data(:, isNumerical);
 numericalData= numericalColumns{:, :}; % table-> array
-numericalVarNames= numericalColumns.Properties.VariableNames; % Added this missing line
+numericalVarNames= numericalColumns.Properties.VariableNames;
 
 % need to det pearson and spearman correlation
 % ignoring certain columns
@@ -96,4 +96,5 @@ fprintf('------------|---------------\n');
 
 for i=1:length(spearmanPairs)
     fprintf('%11.3f | %s\n', spearmanValues(i), spearmanPairs{i});
+
 end
