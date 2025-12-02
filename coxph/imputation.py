@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import KNNImputer
 
 # ---------------------------------- Load Data -----------------------------------------------------
-file_path = "/Users/phoebekim/Downloads/coxph/training data/postFS_df.csv"
+file_path = "./postFS_df.csv"
 df = pd.read_csv(file_path)
 
 target_col = "FAILED"
