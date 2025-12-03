@@ -8,16 +8,16 @@ from sklearn.preprocessing import StandardScaler
 from lifelines import KaplanMeierFitter
 
 # ---------------------------------- Load Data -----------------------------------------------------
-df = pd.read_csv("./training data/knn.csv") # change to control if needed
+df = pd.read_csv("/Users/phoebekim/Downloads/coxph/training data/control.csv")
 
 # ---------------------------------- Drop Unused Columns -------------------------------------------
 drop_cols = ["FAILURETYPE", "UWI", "tbguid", "lifetime_start"]
 df = df.drop(columns=[c for c in drop_cols if c in df.columns])
 
 # ---------------------------------- Encode Categoricals -------------------------------------------
-selected_cats = ["bha_configuration", "ROUTE"]
+selected_cats = ["bha_configuration", "rod_sinker_type", "rod_apigrade", "ROUTE"]
 for col in selected_cats:
-        df[col] = df[col].astype(str)
+    df[col] = df[col].astype(str)
 
 df = pd.get_dummies(df, columns=selected_cats, drop_first=True)
 
@@ -41,7 +41,7 @@ if zero_var:
 numeric_cols_all = df.select_dtypes(include=[np.number]).columns
 
 # ---------------------------------- Scale Numeric Columns ------------------------------------------
-exclude = ["FAILED", "sample_weight", "lifetime_duration_days"]
+exclude = ["FAILED", "lifetime_duration_days"]
 numeric_cols = [c for c in numeric_cols_all if c not in exclude]
 
 scaler = StandardScaler()
@@ -252,4 +252,3 @@ plt.grid(True)
 plt.tight_layout()
 plt.savefig("Kaplan–Meier_Curves_High_vs_Low_Risk.png", dpi=300)
 plt.show()
-
