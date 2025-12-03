@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from lifelines import KaplanMeierFitter
 
 # ---------------------------------- Load Data -----------------------------------------------------
-df = pd.read_csv("/Users/phoebekim/Downloads/coxph/training data/control.csv")
+df = pd.read_csv("/Users/phoebekim/Downloads/coxph/Rod-Pump-Failure-Analysis/coxph/training data/knn.csv")
 
 # ---------------------------------- Drop Unused Columns -------------------------------------------
 drop_cols = ["FAILURETYPE", "UWI", "tbguid", "lifetime_start"]
